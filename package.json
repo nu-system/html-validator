@@ -1,0 +1,24 @@
+{
+  "name": "@_nu/html-validator",
+  "version": "0.0.1",
+  "description": "Semantic HTML liner in just pure CSS way.",
+  "main": "/css/validator.css",
+  "repository": "https://github.com/nu-system/html-validator.git",
+  "homepage": "https://nu-system.github.io/html/validator/",
+  "author": "ziven27@qq.com",
+  "license": "MIT",
+  "scripts": {
+    "log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "commitizenInit": "commitizen init cz-conventional-changelog --yarn --dev --exact"
+  },
+  "devDependencies": {
+    "commitizen": "^4.0.3",
+    "conventional-changelog-cli": "^2.0.23",
+    "cz-conventional-changelog": "3.0.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

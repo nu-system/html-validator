@@ -1,0 +1,53 @@
+#beforeBase(@color, @content) {
+  display: block;
+
+  &::before {
+    margin: 8px;
+    background-color: @color;
+    color: #ffffff;
+    padding: 0.5em;
+    display: block;
+    font-size: 12px;
+    content: @content;
+  }
+
+}
+
+/*
+have to fixed
+=================================================
+*/
+#dangerBefore(@text) {
+  #beforeBase(var(--c-danger), @text);
+}
+
+#danger(@text) {
+  outline: 2px dashed var(--c-danger) !important;
+  content: @text;
+}
+
+/*
+suggest to fixed
+=================================================
+*/
+#warningBefore(@text) {
+  #beforeBase(var(--c-warning), @text);
+}
+
+#warning(@text) {
+  outline: 2px dashed var(--c-warning) !important;
+  content: @text;
+}
+
+/*
+some new tips 
+=================================================
+*/
+#primaryBefore(@text) {
+  #beforeBase(var(--c-primary), @text);
+}
+
+#primary(@text) {
+  outline: 2px dashed var(--c-primary) !important;
+  content: @text;
+}

@@ -1,0 +1,422 @@
+/*
+Variables.
+==================================================
+*/
+:root {
+  --c-danger: #f00;
+  --c-warning: #f90;
+  --c-primary: #2196F3;
+}
+head {
+  display: block;
+}
+/*
+have to fixed
+=================================================
+*/
+/*
+suggest to fixed
+=================================================
+*/
+/*
+some new tips 
+=================================================
+*/
+/*
+Risky links.
+==================================================
+*/
+a[href^="http:"] {
+  outline: 2px dashed var(--c-primary) !important;
+  content: 'Link to "http: " site. Does "https:" equivalent exist?';
+}
+[style] {
+  outline: 2px dashed var(--c-warning) !important;
+  content: 'inline [style="…"] detected';
+}
+head > style:not(:first-of-type) {
+  display: block;
+}
+head > style:not(:first-of-type)::before {
+  margin: 8px;
+  background-color: var(--c-warning);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  content: "Only use one <style> for crucial CSS";
+}
+/*
+body
+=================================================
+*/
+body style {
+  display: block;
+}
+body style::before {
+  margin: 8px;
+  background-color: var(--c-warning);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  content: "<body> should not contain <style>";
+}
+link[href^="http:"] {
+  display: block;
+}
+link[href^="http:"]::before {
+  margin: 8px;
+  background-color: var(--c-warning);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  content: 'Consider "https: " for <link> with [href="' attr(href) '"]';
+}
+/*
+head
+==================================================
+*/
+:not(meta) ~ meta {
+  display: block;
+}
+:not(meta) ~ meta::before {
+  margin: 8px;
+  background-color: var(--c-warning);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  content: 'This meta should put with other meta together';
+}
+head script ~ :not(script) ~ script {
+  display: block;
+}
+head script ~ :not(script) ~ script::before {
+  margin: 8px;
+  background-color: var(--c-warning);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  content: '<script> suppose to put together';
+}
+/*
+Warnings for `script` tags.
+=================================================
+*/
+script[src]:not([async]) {
+  display: block;
+}
+script[src]:not([async])::before {
+  margin: 8px;
+  background-color: var(--c-warning);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  content: 'Consider [async] for <script> with [src="' attr(src) '"]';
+}
+script[src^="http:"] {
+  display: block;
+}
+script[src^="http:"]::before {
+  margin: 8px;
+  background-color: var(--c-warning);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  content: 'Consider "https: " for <script> with [src="' attr(src) '"]';
+}
+/*
+Inline `style`.
+==================================================
+*/
+[style*="display:none"]:not([hidden]):not([class*="dn"]),
+[style*="display:none"]:not([hidden]):not([class*="dn"]) {
+  display: block !important;
+  outline: 2px dashed var(--c-warning) !important;
+  content: 'Use [hidden] or ".dn" instead of [style="display: none"]';
+}
+/*
+img
+==================================================
+*/
+img:not([alt]),
+img[alt=""] {
+  outline: 2px dashed var(--c-warning) !important;
+  content: '<img> needs [alt="…"]';
+}
+img:not([width]),
+img[width=""],
+img:not([height]),
+img[height=""] {
+  outline: 2px dashed var(--c-warning) !important;
+  content: '<img> needs [width="…"] and [height="…"]';
+}
+/*
+table
+==================================================
+*/
+th[height],
+td[height],
+th[with],
+td[with] {
+  outline: 2px dashed var(--c-warning) !important;
+  content: 'Those attrs are deprecated since Html4';
+}
+/*
+Dom
+==================================================
+*/
+span div,
+span h1,
+span h2,
+span h3,
+span h4,
+span h5,
+span h6,
+span p {
+  outline: 2px dashed var(--c-warning) !important;
+  content: "Those elements is not allowed within <span>";
+}
+p div,
+p + div:not(:empty) + p:empty {
+  outline: 2px dashed var(--c-warning) !important;
+  content: <div> is not allowed within <p>" !important;
+}
+div:not([role]):only-child > div:not([role]):only-child > div:not([role]):only-child {
+  outline: 2px dashed var(--c-warning) !important;
+  content: 'Needlessly nested <div> tags (4).';
+}
+* > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * {
+  outline: 2px dashed var(--c-warning) !important;
+  content: 'Dom nesting cannot exceed 20 layers';
+}
+html:not([lang]),
+html[lang=""] {
+  display: block;
+}
+html:not([lang])::before,
+html[lang=""]::before {
+  margin: 8px;
+  background-color: var(--c-danger);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  content: '<html> needs [lang="…"]';
+}
+/*
+head
+==================================================
+*/
+head > :first-child:not([charset="utf-8"]) {
+  display: block;
+}
+head > :first-child:not([charset="utf-8"])::before {
+  margin: 8px;
+  background-color: var(--c-danger);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  content: '<head> needs <meta charset="utf-8"> as: first-child';
+}
+head > script ~ *:not(script) {
+  display: block;
+}
+head > script ~ *:not(script)::before {
+  margin: 8px;
+  background-color: var(--c-danger);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  content: 'This element should put before <script> in head';
+}
+/*
+Empty elements.
+==================================================
+*/
+style:empty,
+script:empty,
+title:empty {
+  display: block;
+}
+style:empty::before,
+script:empty::before,
+title:empty::before {
+  margin: 8px;
+  background-color: var(--c-danger);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  content: 'Those element should not be empty';
+}
+body link {
+  display: block;
+}
+body link::before {
+  margin: 8px;
+  background-color: var(--c-danger);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  content: '<body> should not contain <link> [href="' attr(href) '"]';
+}
+abbr:not([title]) {
+  outline: 2px dashed var(--c-danger) !important;
+  content: '<abbr> needs [title="…"]';
+}
+a:not([title]),
+a[title=""] {
+  outline: 2px dashed var(--c-danger) !important;
+  content: '<a> needs [title="…"]';
+}
+a[target]:not([rel*="noopener"]),
+a[target]:not([rel*="noreferrer"]) {
+  outline: 2px dashed var(--c-danger) !important;
+  content: '[target="…"] also needs [rel="noopener noreferrer"]';
+}
+[id=""] {
+  outline: 2px dashed var(--c-danger) !important;
+  content: '[id=""] should not be empty';
+}
+/*
+img
+==================================================
+*/
+img:not([src]),
+img[src=""] {
+  outline: 2px dashed var(--c-danger) !important;
+  content: '<img> needs [src="…"]';
+}
+/*
+Invalid `figcaption` nesting.
+==================================================
+*/
+:not(figure) > figcaption {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "<figcaption> must be a child of <figure>";
+}
+figure > figcaption:not(:first-child):not(:last-child),
+figure > figcaption:not(:first-child):not(:last-child) ~ :last-child:not(figcaption) {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "<figcaption> must be first/last child of <figure>";
+}
+figure > figcaption:not(:first-of-type) {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "<figure> should only contain one <figcaption>" !important;
+}
+/*
+Invalid `li` nesting.
+==================================================
+*/
+:not(ul):not(ol) > li {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "<li> is missing a parent <ul> or <ol>";
+}
+ol > :not(li),
+ul > :not(li) {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "Immediate child of <ol> or <ul> must be <li>";
+}
+/*
+Invalid `dd` nesting.
+==================================================
+*/
+:not(dl):not(div) > dd {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "<dd> is missing a parent <dl> or <div>";
+}
+:not(dl):not(div) > dt {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "<dt> is missing a parent <dl> or <div>";
+}
+:not(dl) > div > dd {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "<dd> with parent <div> is missing <dl> grandparent";
+}
+:not(dl) > div > dt {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "<dt> with parent <div> is missing <dl> grandparent";
+}
+dl > :not(dt):not(dd):not(div) {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "Immediate child of <dl> must be <dt>, <dd>, or <div>";
+}
+dl > dd:first-child {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "<dt> or <div> should be: first-child of <dl>, not <dd>";
+}
+dl > div > dd:first-child {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "<dt> should be: first-child of <div> within <dl>, not <dd>";
+}
+dl > div > :not(dt):not(dd) {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "Immediate child of <div> within <dl> must be <dt> or <dd>.";
+}
+/*
+table
+==================================================
+*/
+th[abbr],
+td[abbr],
+th[align],
+td[align],
+th[axis],
+td[axis],
+th[char],
+td[char],
+th[charoff],
+td[charoff],
+th[scope],
+td[scope],
+th[valign],
+td[valign] {
+  outline: 2px dashed var(--c-danger) !important;
+  content: 'Those attrs are obsolete in html5';
+}
+/*
+Invalid `legend` position in `fieldset`.
+==================================================
+*/
+fieldset > :not(legend):first-child {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "Invalid: first-child of <legend>";
+}
+:not(fieldset) > legend,
+fieldset > legend:not(:first-child) {
+  outline: 2px dashed var(--c-danger) !important;
+  content: "<legend> must be: first-child of <fieldset>";
+}
+/*
+form
+==================================================
+*/
+input[type="radio"]:not([name]) {
+  outline: 2px dashed var(--c-danger) !important;
+  content: 'Radios without name="…"';
+}
+label:not([for]) {
+  outline: 2px dashed var(--c-danger) !important;
+  content: '<label> needs [for="…"] to match <input> [id="…"]';
+}
+label[for=""] {
+  outline: 2px dashed var(--c-danger) !important;
+  content: '<label> [for=""] should not be empty';
+}
+input:not([type]) {
+  outline: 2px dashed var(--c-danger) !important;
+  content: '<input> need [type="…"]';
+}
+button:not([type]) {
+  outline: 2px dashed var(--c-danger) !important;
+  content: '<button> need [type="…"]';
+}
