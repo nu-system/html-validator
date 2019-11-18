@@ -7,6 +7,13 @@
 head > style:not(:first-of-type) {
 	#warningBefore("Only use one <style> for crucial CSS");
 }
+head>:first-child:not([charset="utf-8"]) {
+	#warningBefore('<head> needs <meta charset="utf-8"> as: first-child');
+}
+
+head > script ~ *:not(script){
+  #warningBefore('This element should put before <script> in head');
+}
 
 /*
 body
@@ -14,10 +21,6 @@ body
 */
 body style {
 	#warningBefore("<body> should not contain <style>");
-}
-
-link[href^="http:"] {
-	#warningBefore('Consider "https: " for <link> with [href="'attr(href) '"]');
 }
 
 /*

@@ -4,24 +4,12 @@ html:not([lang]), html[lang=""]{
 	#dangerBefore('<html> needs [lang="…"]');
 }
 
-/*
-head
-==================================================
-*/
-
-head>:first-child:not([charset="utf-8"]) {
-	#dangerBefore('<head> needs <meta charset="utf-8"> as: first-child');
-}
-
-head > script ~ *:not(script){
-  #dangerBefore('This element should put before <script> in head');
-}
 
 /*
 Empty elements.
 ==================================================
 */
-style, script, title {
+style:not([src]), script, title {
 	&:empty {
 		#dangerBefore('Those element should not be empty');
 	}
@@ -39,7 +27,7 @@ a:not([title]), a[title=""] {
   #danger('<a> needs [title="…"]');
 }
 a[target]:not([rel*="noopener"]), a[target]:not([rel*="noreferrer"]) {
-  #danger('[target="…"] also needs [rel="noopener noreferrer"]')
+  #danger('[target="…"] also needs [rel="noopener"] or [rel="noopener noreferrer"]')
 }
 
 
@@ -87,37 +75,18 @@ ol >:not(li), ul >:not(li) {
 Invalid `dd` nesting.
 ==================================================
 */
-:not(dl):not(div) > dd {
+:not(dl) dd, :not(dl) dt {
   #danger("<dd> is missing a parent <dl> or <div>");
-}
-
-:not(dl):not(div) > dt {
-  #danger("<dt> is missing a parent <dl> or <div>");
-}
-
-:not(dl) > div > dd {
-  #danger("<dd> with parent <div> is missing <dl> grandparent");
-}
-
-:not(dl) > div > dt {
-  #danger("<dt> with parent <div> is missing <dl> grandparent");
 }
 
 dl >:not(dt):not(dd):not(div) {
   #danger("Immediate child of <dl> must be <dt>, <dd>, or <div>");
 }
 
-dl > dd:first-child {
-  #danger("<dt> or <div> should be: first-child of <dl>, not <dd>");
+dl dd:first-child {
+  #danger("<dd> can not be: first-child of <dl>");
 }
 
-dl > div > dd:first-child {
-  #danger("<dt> should be: first-child of <div> within <dl>, not <dd>");
-}
-
-dl > div >:not(dt):not(dd) {
-  #danger("Immediate child of <div> within <dl> must be <dt> or <dd>.");
-}
 /*
 table
 ==================================================
@@ -144,22 +113,18 @@ fieldset >:not(legend):first-child {
 form
 ==================================================
 */
-input[type="radio"]:not([name]) {
+input[type="radio"]:not([name]), input[type="radio"][name=""] {
   #danger('Radios without name="…"');
 }
 
-label:not([for]) {
-  #danger('<label> needs [for="…"] to match <input> [id="…"]');
+label:not([for]), label[for=""] {
+  #danger('<label> needs [for="…"]');
 }
 
-label[for=""] {
-  #danger('<label> [for=""] should not be empty');
-}
-
-input:not([type]) {
+input:not([type]), input[type=""] {
   #danger('<input> need [type="…"]');
 }
 
-button:not([type]) {
+button:not([type]), button[type=""]  {
   #danger('<button> need [type="…"]');
 }

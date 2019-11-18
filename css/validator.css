@@ -9,6 +9,8 @@ Variables.
 }
 head {
   display: block;
+  max-height: 200px;
+  overflow: auto;
 }
 /*
 have to fixed
@@ -46,6 +48,30 @@ head > style:not(:first-of-type)::before {
   font-size: 12px;
   content: "Only use one <style> for crucial CSS";
 }
+head > :first-child:not([charset="utf-8"]) {
+  display: block;
+}
+head > :first-child:not([charset="utf-8"])::before {
+  margin: 8px;
+  background-color: var(--c-warning);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  content: '<head> needs <meta charset="utf-8"> as: first-child';
+}
+head > script ~ *:not(script) {
+  display: block;
+}
+head > script ~ *:not(script)::before {
+  margin: 8px;
+  background-color: var(--c-warning);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  content: 'This element should put before <script> in head';
+}
 /*
 body
 =================================================
@@ -61,18 +87,6 @@ body style::before {
   display: block;
   font-size: 12px;
   content: "<body> should not contain <style>";
-}
-link[href^="http:"] {
-  display: block;
-}
-link[href^="http:"]::before {
-  margin: 8px;
-  background-color: var(--c-warning);
-  color: #ffffff;
-  padding: 0.5em;
-  display: block;
-  font-size: 12px;
-  content: 'Consider "https: " for <link> with [href="' attr(href) '"]';
 }
 /*
 head
@@ -210,43 +224,15 @@ html[lang=""]::before {
   content: '<html> needs [lang="…"]';
 }
 /*
-head
-==================================================
-*/
-head > :first-child:not([charset="utf-8"]) {
-  display: block;
-}
-head > :first-child:not([charset="utf-8"])::before {
-  margin: 8px;
-  background-color: var(--c-danger);
-  color: #ffffff;
-  padding: 0.5em;
-  display: block;
-  font-size: 12px;
-  content: '<head> needs <meta charset="utf-8"> as: first-child';
-}
-head > script ~ *:not(script) {
-  display: block;
-}
-head > script ~ *:not(script)::before {
-  margin: 8px;
-  background-color: var(--c-danger);
-  color: #ffffff;
-  padding: 0.5em;
-  display: block;
-  font-size: 12px;
-  content: 'This element should put before <script> in head';
-}
-/*
 Empty elements.
 ==================================================
 */
-style:empty,
+style:not([src]):empty,
 script:empty,
 title:empty {
   display: block;
 }
-style:empty::before,
+style:not([src]):empty::before,
 script:empty::before,
 title:empty::before {
   margin: 8px;
@@ -281,7 +267,7 @@ a[title=""] {
 a[target]:not([rel*="noopener"]),
 a[target]:not([rel*="noreferrer"]) {
   outline: 2px dashed var(--c-danger) !important;
-  content: '[target="…"] also needs [rel="noopener noreferrer"]';
+  content: '[target="…"] also needs [rel="noopener"] or [rel="noopener noreferrer"]';
 }
 [id=""] {
   outline: 2px dashed var(--c-danger) !important;
@@ -330,37 +316,18 @@ ul > :not(li) {
 Invalid `dd` nesting.
 ==================================================
 */
-:not(dl):not(div) > dd {
+:not(dl) dd,
+:not(dl) dt {
   outline: 2px dashed var(--c-danger) !important;
   content: "<dd> is missing a parent <dl> or <div>";
-}
-:not(dl):not(div) > dt {
-  outline: 2px dashed var(--c-danger) !important;
-  content: "<dt> is missing a parent <dl> or <div>";
-}
-:not(dl) > div > dd {
-  outline: 2px dashed var(--c-danger) !important;
-  content: "<dd> with parent <div> is missing <dl> grandparent";
-}
-:not(dl) > div > dt {
-  outline: 2px dashed var(--c-danger) !important;
-  content: "<dt> with parent <div> is missing <dl> grandparent";
 }
 dl > :not(dt):not(dd):not(div) {
   outline: 2px dashed var(--c-danger) !important;
   content: "Immediate child of <dl> must be <dt>, <dd>, or <div>";
 }
-dl > dd:first-child {
+dl dd:first-child {
   outline: 2px dashed var(--c-danger) !important;
-  content: "<dt> or <div> should be: first-child of <dl>, not <dd>";
-}
-dl > div > dd:first-child {
-  outline: 2px dashed var(--c-danger) !important;
-  content: "<dt> should be: first-child of <div> within <dl>, not <dd>";
-}
-dl > div > :not(dt):not(dd) {
-  outline: 2px dashed var(--c-danger) !important;
-  content: "Immediate child of <div> within <dl> must be <dt> or <dd>.";
+  content: "<dd> can not be: first-child of <dl>";
 }
 /*
 table
@@ -400,23 +367,23 @@ fieldset > legend:not(:first-child) {
 form
 ==================================================
 */
-input[type="radio"]:not([name]) {
+input[type="radio"]:not([name]),
+input[type="radio"][name=""] {
   outline: 2px dashed var(--c-danger) !important;
   content: 'Radios without name="…"';
 }
-label:not([for]) {
-  outline: 2px dashed var(--c-danger) !important;
-  content: '<label> needs [for="…"] to match <input> [id="…"]';
-}
+label:not([for]),
 label[for=""] {
   outline: 2px dashed var(--c-danger) !important;
-  content: '<label> [for=""] should not be empty';
+  content: '<label> needs [for="…"]';
 }
-input:not([type]) {
+input:not([type]),
+input[type=""] {
   outline: 2px dashed var(--c-danger) !important;
   content: '<input> need [type="…"]';
 }
-button:not([type]) {
+button:not([type]),
+button[type=""] {
   outline: 2px dashed var(--c-danger) !important;
   content: '<button> need [type="…"]';
 }
