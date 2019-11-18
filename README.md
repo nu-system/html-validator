@@ -1,6 +1,6 @@
 # html-validator
 
-Help linter for semantic HTML in just pure CSS way.
+Semantic HTML linter in just pure CSS way.
 
 Base on the [validator.w3.org](https://validator.w3.org/)
 
