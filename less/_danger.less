@@ -9,7 +9,7 @@ html:not([lang]), html[lang=""]{
 Empty elements.
 ==================================================
 */
-style:not([src]), script, title {
+style, script:not([src]), title {
 	&:empty {
 		#dangerBefore('Those element should not be empty');
 	}

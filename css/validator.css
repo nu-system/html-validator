@@ -11,6 +11,7 @@ head {
   display: block;
   max-height: 200px;
   overflow: auto;
+  font-size: 0;
 }
 /*
 have to fixed
@@ -227,13 +228,13 @@ html[lang=""]::before {
 Empty elements.
 ==================================================
 */
-style:not([src]):empty,
-script:empty,
+style:empty,
+script:not([src]):empty,
 title:empty {
   display: block;
 }
-style:not([src]):empty::before,
-script:empty::before,
+style:empty::before,
+script:not([src]):empty::before,
 title:empty::before {
   margin: 8px;
   background-color: var(--c-danger);
