@@ -1,0 +1,155 @@
+/*
+Variables.
+==================================================
+*/
+:root {
+  --c-level1: #f00;
+  --c-level2: #f90;
+}
+
+head {
+  display: block;
+  max-height: 200px;
+  overflow: auto;
+  font-size: 0;
+  line-height: 0;
+  outline: 1px solid #000000;
+  margin: 8px;
+}
+
+// 需要把校验信息放到 before 元素
+#beforeBase(@color, @content) {
+  display: block;
+
+  &::before {
+    margin: 8px;
+    background-color: @color;
+    color: #ffffff;
+    padding: 0.5em;
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    content: @content;
+  }
+}
+
+// 需要把校验信息放到 before 元素
+#level1Before(@text) {
+  #beforeBase(var(--c-level1), @text);
+}
+
+// 等级1的校验
+#level1(@text) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: @text;
+}
+
+/*
+leve1: Should to fixed
+==================================================
+*/
+
+html:not([lang]),
+html[lang=""] {
+  #level1Before('<html> needs [lang="…"]');
+}
+
+style,
+script:not([src]),
+title {
+  &:empty {
+    #level1Before('Those element should not be empty');
+  }
+}
+
+[style=""],
+[title=""],
+[id=""],
+[src=""],
+[href=""],
+[name=""],
+[for=""],
+[type=""],
+[width=""],
+[height=""] {
+  #level1('Those props should not empty');
+}
+
+abbr:not([title]) {
+  #level1('<abbr> needs [title="…"]');
+}
+
+a[target]:not([rel*="noopener"]),
+a[target]:not([rel*="noreferrer"]) {
+  #level1('[target="…"] also needs [rel="noopener"] or [rel="noopener noreferrer"]')
+}
+
+/* figure */
+:not(figure)>figcaption {
+  #level1("<figcaption> must be a child of <figure>");
+}
+
+figure>figcaption:not(:first-child):not(:last-child),
+figure>figcaption:not(:first-child):not(:last-child)~:last-child:not(figcaption) {
+  #level1("<figcaption> must be first/last child of <figure>");
+}
+
+figure>figcaption:not(:first-of-type) {
+  #level1("<figure> should only contain one <figcaption>");
+}
+
+/* ul/ol */
+:not(ul):not(ol)>li {
+  #level1("<li> is missing a parent <ul> or <ol>");
+}
+
+ol>:not(li),
+ul>:not(li) {
+  #level1("Immediate child of <ol> or <ul> must be <li>");
+}
+
+:not(dl) dd,
+:not(dl) dt {
+  #level1("<dd> or <dt> is missing a parent <dl> or <div>");
+}
+
+/* dl */
+dl>:not(dt):not(dd):not(div) {
+  #level1("Immediate child of <dl> must be <dt>, <dd>, or <div>");
+}
+
+/* form */
+fieldset>:not(legend):first-child {
+  #level1("Invalid: first-child of <legend>");
+}
+
+:not(fieldset)>legend,
+fieldset>legend:not(:first-child) {
+  #level1("<legend> must be: first-child of <fieldset>");
+}
+
+input[type="radio"]:not([name]) {
+  #level1('Radios without name="…"');
+}
+
+form button:not([type]) {
+  #level1('<button> in <form> need [type="…"]');
+}
+
+/* dom */
+a a {
+  #level1('<a/> should not be the kids of  <a/>');
+}
+
+p div,
+p+div:not(:empty)+p:empty {
+  #level1('<div> is not allowed within <p>');
+}
+
+:not(svg) [href]:not(a):not(link):not(area) {
+  #level1('attribute href not allowed on this element');
+}
+
+[target]:not(a):not(form) {
+  #level1('attribute target not allowed on this element');
+}

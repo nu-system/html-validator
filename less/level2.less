@@ -1,0 +1,91 @@
+@import './level1.less';
+
+//  suggest to fixed
+#level2Before(@text) {
+    #beforeBase(var(--c-level2), @text);
+}
+
+#level2(@text) {
+    outline: 1px dashed var(--c-level2) !important;
+    content: @text;
+}
+
+/* https: */
+a[href^="http:"] {
+    #level2('Link to "http: " site. Does "https:" equivalent exist?')
+}
+a:not([title]) {
+    #level2('<a/> may needs [title="…"]');
+}
+
+/* body */
+body style {
+    #level2Before("<body> should not contain <style>");
+}
+
+body link {
+    #level2Before('<body> should not contain <link> ');
+}
+
+/* dl */
+dl dd:first-child {
+    #level2("<dd> can not be: first-child of <dl>");
+}
+
+
+/* dom */
+div:only-child>div:only-child>div:only-child {
+    #level2('Needlessly nested <div> tags (3).');
+}
+
+
+/* head */
+head>style:not(:first-of-type) {
+    #level2Before("Only use one <style> for crucial CSS");
+}
+
+label:not([for]) {
+    #level2('<label> needs [for="…"]');
+}
+
+img:not([src]),
+img:not([width]),
+img:not([height]),
+img:not([alt]) {
+    #level2('<img> needs [width="…"] & [height="…"] & [alt="…"] & [src="…"]');
+}
+
+[style] {
+    #level2('inline [style="…"] detected');
+}
+
+/* script */
+script[src^="http:"] {
+    #level2('Consider "https: " for <script> with [src="'attr(src) '"]');
+}
+
+script[src]:not([async]):not([defer])  {
+    #level2Before('Consider [async] or [defer] for <script> with [src="'attr(src) '"]');
+}
+
+span,
+strong,
+small,
+em,
+i,
+label {
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    form,
+    ul,
+    ol {
+        #level1("Block elements are not suppose be in the inline or inline block elements");
+    }
+
+}

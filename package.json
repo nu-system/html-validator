@@ -2,7 +2,7 @@
   "name": "@_nu/html-validator",
   "version": "0.0.4",
   "description": "Semantic HTML liner in just pure CSS way.",
-  "main": "/css/validator.css",
+  "main": "/css/level2.css",
   "repository": "https://github.com/nu-system/html-validator.git",
   "homepage": "https://nu-system.github.io/html/validator/",
   "author": "ziven27@qq.com",

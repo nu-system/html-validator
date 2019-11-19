@@ -1,0 +1,145 @@
+/*
+Variables.
+==================================================
+*/
+:root {
+  --c-level1: #f00;
+  --c-level2: #f90;
+}
+head {
+  display: block;
+  max-height: 200px;
+  overflow: auto;
+  font-size: 0;
+  line-height: 0;
+  outline: 1px solid #000000;
+  margin: 8px;
+}
+/*
+leve1: Should to fixed
+==================================================
+*/
+html:not([lang]),
+html[lang=""] {
+  display: block;
+}
+html:not([lang])::before,
+html[lang=""]::before {
+  margin: 8px;
+  background-color: var(--c-level1);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  content: '<html> needs [lang="…"]';
+}
+style:empty,
+script:not([src]):empty,
+title:empty {
+  display: block;
+}
+style:empty::before,
+script:not([src]):empty::before,
+title:empty::before {
+  margin: 8px;
+  background-color: var(--c-level1);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  content: 'Those element should not be empty';
+}
+[style=""],
+[title=""],
+[id=""],
+[src=""],
+[href=""],
+[name=""],
+[for=""],
+[type=""],
+[width=""],
+[height=""] {
+  outline: 2px dashed var(--c-level1) !important;
+  content: 'Those props should not empty';
+}
+abbr:not([title]) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: '<abbr> needs [title="…"]';
+}
+a[target]:not([rel*="noopener"]),
+a[target]:not([rel*="noreferrer"]) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: '[target="…"] also needs [rel="noopener"] or [rel="noopener noreferrer"]';
+}
+/* figure */
+:not(figure) > figcaption {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "<figcaption> must be a child of <figure>";
+}
+figure > figcaption:not(:first-child):not(:last-child),
+figure > figcaption:not(:first-child):not(:last-child) ~ :last-child:not(figcaption) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "<figcaption> must be first/last child of <figure>";
+}
+figure > figcaption:not(:first-of-type) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "<figure> should only contain one <figcaption>";
+}
+/* ul/ol */
+:not(ul):not(ol) > li {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "<li> is missing a parent <ul> or <ol>";
+}
+ol > :not(li),
+ul > :not(li) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "Immediate child of <ol> or <ul> must be <li>";
+}
+:not(dl) dd,
+:not(dl) dt {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "<dd> or <dt> is missing a parent <dl> or <div>";
+}
+/* dl */
+dl > :not(dt):not(dd):not(div) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "Immediate child of <dl> must be <dt>, <dd>, or <div>";
+}
+/* form */
+fieldset > :not(legend):first-child {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "Invalid: first-child of <legend>";
+}
+:not(fieldset) > legend,
+fieldset > legend:not(:first-child) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "<legend> must be: first-child of <fieldset>";
+}
+input[type="radio"]:not([name]) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: 'Radios without name="…"';
+}
+form button:not([type]) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: '<button> in <form> need [type="…"]';
+}
+/* dom */
+a a {
+  outline: 2px dashed var(--c-level1) !important;
+  content: '<a/> should not be the kids of  <a/>';
+}
+p div,
+p + div:not(:empty) + p:empty {
+  outline: 2px dashed var(--c-level1) !important;
+  content: '<div> is not allowed within <p>';
+}
+:not(svg) [href]:not(a):not(link):not(area) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: 'attribute href not allowed on this element';
+}
+[target]:not(a):not(form) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: 'attribute target not allowed on this element';
+}

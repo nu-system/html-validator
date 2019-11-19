@@ -14,7 +14,7 @@
     </style>
     <!-- FONTS. -->
     <!-- STYLES. -->
-    <link rel="stylesheet" href="./css/validator.css" />
+    <link rel="stylesheet" href="./css/level2.css" />
     <!-- One `style` tag is okay. -->
     <style></style>
     <!-- More `style` tags get flagged. -->
@@ -61,107 +61,120 @@
 
     <!-- Img -->
     <h3>Img</h3>
-    <div>
-        <p><img src="https://bookcover.yuewen.com/qdbimg/349573/1015609210/180" alt="img" /></p>
-        <p><img src="https://bookcover.yuewen.com/qdbimg/349573/1015609210/180" height="240" width="180" /></p>
-        <p><img alt="(Image source omitted)" alt="img" height="240" width="180" /></p>
-        </ul>
+    <p><img src="https://bookcover.yuewen.com/qdbimg/349573/1015609210/180" alt="img" /></p>
+    <p><img src="https://bookcover.yuewen.com/qdbimg/349573/1015609210/180" height="240" width="180" /></p>
+    <p><img alt="(Image source omitted)" alt="img" height="240" width="180" /></p>
 
-        <!-- Figure -->
-        <h3>Figure</h3>
-        <p>
-            The <code>figcaption</code> not first/last child of <code>figure</code>.
-        </p>
-        <figure>
-            <img alt="Example image" src="https://bookcover.yuewen.com/qdbimg/349573/1015609210/180" height="240"
-                width="180" />
-            <figcaption>
-                Image description
-            </figcaption>
-            <p>
-                (This paragraph is <code>:last-child</code>.)
-            </p>
-        </figure>
-        <p>
-            More than one <code>figcaption</code> per <code>figure</code>
-        </p>
-        <figure>
-            <figcaption>
-                Image description
-            </figcaption>
-            <img src="https://bookcover.yuewen.com/qdbimg/349573/1015609210/180" height="240" width="180"
-                alt="book cover" />
-            <figcaption>
-                Image description
-            </figcaption>
-        </figure>
-        <p>Caption is not a child of figure.</p>
+    <!-- Figure -->
+    <h3>Figure</h3>
+    <p>
+        The <code>figcaption</code> not first/last child of <code>figure</code>.
+    </p>
+    <figure>
+        <img alt="Example image" src="https://bookcover.yuewen.com/qdbimg/349573/1015609210/180" height="240"
+            width="180" />
         <figcaption>
-            This <code>figcaption</code> lacks a <code>figure</code> parent.
+            Image description
         </figcaption>
-        <hr />
+        <p>
+            (This paragraph is <code>:last-child</code>.)
+        </p>
+    </figure>
+    <p>
+        More than one <code>figcaption</code> per <code>figure</code>
+    </p>
+    <figure>
+        <figcaption>
+            Image description
+        </figcaption>
+        <img src="https://bookcover.yuewen.com/qdbimg/349573/1015609210/180" height="240" width="180"
+            alt="book cover" />
+        <figcaption>
+            Image description
+        </figcaption>
+    </figure>
+    <p>Caption is not a child of figure.</p>
+    <figcaption>
+        This <code>figcaption</code> lacks a <code>figure</code> parent.
+    </figcaption>
+    <hr />
 
-        <!-- link -->
-        <h3>Link</h3>
-        <p>
-            <a href="http://example.com/" title="Example">
-                External link to non-HTTPS site.
-            </a>
-        </p>
-        <p>
-            <a href="https://example.com/">
-                Example link without title
-            </a>
-        </p>
-        <p>
-            <a href="https://example.com/" title="">
-                Example link with empty title
-            </a>
-        </p>
-        <p>Link with <code>target="_blank"</code> that lacks <code>rel="noopener noreferrer"</code>.</p>
-        <p>
-            <a href="https://example.com/" title="Example" target="_blank">
-                Example link
-            </a>
-        </p>
+    <!-- link -->
+    <h3>Link</h3>
+    <p>
+        <a href="http://example.com/" title="Example">
+            External link to non-HTTPS site.
+        </a>
+    </p>
+    <p>
+        <a href="https://example.com/">
+            Example link without title
+        </a>
+    </p>
+    <p>
+        <a href="https://example.com/" title="">
+            Example link with empty title
+        </a>
+    </p>
+    <p>Link with <code>target="_blank"</code> that lacks <code>rel="noopener noreferrer"</code>.</p>
+    <p>
+        <a href="https://example.com/" title="Example" target="_blank">
+            Example link
+        </a>
+    </p>
 
-        <hr />
+    <hr />
 
-        <!-- List -->
-        <h3>List</h3>
+    <!-- List -->
+    <h3>List</h3>
 
-        <p>
-            Invalid child of <code>list</code>.
-        </p>
-        <ol>
-            <li>
-                <p>
-                    Valid item within list.
-                </p>
-            </li>
-            <p>
-                Invalid item within list.
-            </p>
-        </ol>
-        <ul>
-            <li>
-                <p>
-                    Valid item within list.
-                </p>
-            </li>
-            <p>
-                Invalid item within list.
-            </p>
-        </ul>
+    <p>
+        Invalid child of <code>list</code>.
+    </p>
+    <ol>
         <li>
-            <code>li</code> without parent <code>ol</code> or <code>ul</code>.
+            <p>
+                Valid item within list.
+            </p>
         </li>
-        <hr />
+        <p>
+            Invalid item within list.
+        </p>
+    </ol>
+    <ul>
+        <li>
+            <p>
+                Valid item within list.
+            </p>
+        </li>
+        <p>
+            Invalid item within list.
+        </p>
+    </ul>
+    <li>
+        <code>li</code> without parent <code>ol</code> or <code>ul</code>.
+    </li>
+    <hr />
 
 
-        <!-- Dl -->
-        <h3>DL</h3>
-        <dl>
+    <!-- Dl -->
+    <h3>DL</h3>
+    <dl>
+        <dd>
+            <code>dd</code> - Definition list: Definition
+        </dd>
+        <dt>
+            <code>dt</code> - Definition list: Term
+        </dt>
+        <dd>
+            <code>dd</code> - Definition list: Definition
+        </dd>
+        <p>
+            Invalid item within list.
+        </p>
+    </dl>
+    <dl>
+        <div>
             <dd>
                 <code>dd</code> - Definition list: Definition
             </dd>
@@ -174,153 +187,97 @@
             <p>
                 Invalid item within list.
             </p>
-        </dl>
-        <dl>
-            <div>
-                <dd>
-                    <code>dd</code> - Definition list: Definition
-                </dd>
-                <dt>
-                    <code>dt</code> - Definition list: Term
-                </dt>
-                <dd>
-                    <code>dd</code> - Definition list: Definition
-                </dd>
-                <p>
-                    Invalid item within list.
-                </p>
-            </div>
-        </dl>
-        <div>
-            <dt>
-                <code>dt</code> without correct parent.
-            </dt>
-            <dd>
-                <code>dd</code> without correct parent.
-            </dd>
         </div>
+    </dl>
+    <div>
         <dt>
             <code>dt</code> without correct parent.
         </dt>
         <dd>
             <code>dd</code> without correct parent.
         </dd>
-        <hr />
+    </div>
+    <dt>
+        <code>dt</code> without correct parent.
+    </dt>
+    <dd>
+        <code>dd</code> without correct parent.
+    </dd>
+    <hr />
 
-        <!-- Form -->
-        <h3>Form</h3>
+    <!-- Form -->
+    <h3>Form</h3>
 
-        <form onsubmit="return false">
-            <fieldset>
-                <legend>
-                    Radios without <code>name="…"</code>
-                </legend>
-                <p>
-                    <label for="RADIO_ID_1">
-                        <input type="radio" id="RADIO_ID_1" />
-                        'Radios without name="…"'
-                    </label>
-                </p>
-                <p>
-                    <label for="RADIO_ID_2">
-                        <input type="radio" id="RADIO_ID_2" />
-                        'Radios without name="…"'
-                    </label>
-                </p>
-            </fieldset>
-            <fieldset>
-                <p>
-                    This paragraph is <code>:first-child</code>.
-                </p>
-                <legend>
-                    This legend is not <code>:first-child</code>.
-                </legend>
-                <p>
-                    <label>
-                        This <code>label</code> lacks <code>for="…"</code>
-                    </label>
+    <form onsubmit="return false">
+        <fieldset>
+            <legend>
+                Radios without <code>name="…"</code>
+            </legend>
+            <p>
+                <label for="RADIO_ID_1">
+                    <input type="radio" id="RADIO_ID_1" />
+                    'Radios without name="…"'
+                </label>
+            </p>
+            <p>
+                <label for="RADIO_ID_2">
+                    <input type="radio" id="RADIO_ID_2" />
+                    'Radios without name="…"'
+                </label>
+            </p>
+        </fieldset>
+        <fieldset>
+            <p>
+                This paragraph is <code>:first-child</code>.
+            </p>
+            <legend>
+                This legend is not <code>:first-child</code>.
+            </legend>
+            <p>
+                <label>
+                    This <code>label</code> lacks <code>for="…"</code>
+                </label>
 
-                </p>
-                <p>
-                    <label for="">
-                        This <code>label</code> for <code>for=""</code> should not be empty
-                    </label>
-                </p>
-                <p>
-                    This <code>input</code> lacks <code>type="…"</code>
-                    <input />
-                </p>
-                <p>
-                    <button>
-                        Button without <code>type="…"</code>
-                    </button>
-                </p>
-            </fieldset>
-        </form>
-        <hr />
+            </p>
+            <p>
+                <label for="">
+                    This <code>label</code> for <code>for=""</code> should not be empty
+                </label>
+            </p>
+            <p>
+                This <code>input</code> lacks <code>type="…"</code>
+                <input />
+            </p>
+            <p>
+                <button>
+                    Button without <code>type="…"</code>
+                </button>
+            </p>
+        </fieldset>
+    </form>
+    <hr />
 
-        <!-- Table -->
-        <h3>Table</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        &nbsp;
-                    </th>
-                    <th scope="INVALID">
-                        Uno
-                    </th>
-                    <th scope="col">
-                        Dos
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">
-                        Foo:
-                    </th>
-                    <td>
-                        Value 1
-                    </td>
-                    <td>
-                        Value 2
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="INVALID">
-                        Foo:
-                    </th>
-                    <td>
-                        Value 1
-                    </td>
-                    <td>
-                        Value 2
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <hr />
+    <!-- Eelemen -->
+    <h3>Eelement</h3>
 
-        <!-- Eelemen -->
-        <h3>Eelement</h3>
-        <span>
-            <div>
-                Improperly nested <code>div</code>, inside <code>span</code>.
-            </div>
-        </span>
-        <p>
-            <div>
-                Improperly nested <code>div</code>, inside <code>p</code>.
-            </div>
-        </p>
-        <style>
-            .nesting,
-            .nesting div {
-                padding: 8px;
-            }
-        </style>
-        <div class="nesting">
+    <span>
+        <div>
+            Improperly nested <code>div</code>, inside <code>span</code>.
+        </div>
+    </span>
+    <p>
+        <div>
+            Improperly nested <code>div</code>, inside <code>p</code>.
+        </div>
+    </p>
+    <style>
+        .nesting,
+        .nesting div {
+            padding: 8px;
+        }
+    </style>
+    <div class="nesting">
+        <div>
             <div>
                 <div>
                     <div>
@@ -328,228 +285,19 @@
                             <div>
                                 <div>
                                     <div>
-                                        <div>
-                                            <p>
-                                                Needless nesting of <code>div</code> tags cannot exceed 4 levels.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <p>hello world</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <style>
-            .nesting2,
-            .nesting2 div {
-                padding: 4px 1px;
-            }
-        </style>
-        <p>Dom nesting cannot exceed 50 layers</p>
-        <div class="nesting2">
-            <div>1</div>
-            <div>
-                <div>2</div>
-                <div>
-                    <div>3</div>
-                    <div>
-                        <div>4</div>
-                        <div>
-                            <div>5</div>
-                            <div>
-                                <div>6</div>
-                                <div>
-                                    <div>7</div>
-                                    <div>
-                                        <div>8</div>
-                                        <div>
-                                            <div>9</div>
-                                            <div>
-                                                <div>10</div>
-                                                <div>
-                                                    <div>11</div>
-                                                    <div>
-                                                        <div>12</div>
-                                                        <div>
-                                                            <div>13</div>
-                                                            <div>
-                                                                <div>14</div>
-                                                                <div>
-                                                                    <div>15</div>
-                                                                    <div>
-                                                                        <div>16</div>
-                                                                        <div>
-                                                                            <div>17</div>
-                                                                            <div>
-                                                                                <div>18</div>
-                                                                                <div>
-                                                                                    <div>19</div>
-                                                                                    <div>
-                                                                                        <div>20</div>
-                                                                                        <div>
-                                                                                            <div>21</div>
-                                                                                            <div>
-                                                                                                <div>22</div>
-                                                                                                <div>
-                                                                                                    <div>23</div>
-                                                                                                    <div>
-                                                                                                        <div>24</div>
-                                                                                                        <div>
-                                                                                                            <div>26
-                                                                                                            </div>
-                                                                                                            <div>
-                                                                                                                <div>27
-                                                                                                                </div>
-                                                                                                                <div>
-                                                                                                                    <div>
-                                                                                                                        28
-                                                                                                                    </div>
-                                                                                                                    <div>
-                                                                                                                        <div>
-                                                                                                                            29
-                                                                                                                        </div>
-                                                                                                                        <div>
-                                                                                                                            <div>
-                                                                                                                                30
-                                                                                                                            </div>
-                                                                                                                            <div>
-                                                                                                                                <div>
-                                                                                                                                    31
-                                                                                                                                </div>
-                                                                                                                                <div>
-                                                                                                                                    <div>
-                                                                                                                                        32
-                                                                                                                                    </div>
-                                                                                                                                    <div>
-                                                                                                                                        <div>
-                                                                                                                                            33
-                                                                                                                                        </div>
-                                                                                                                                        <div>
-                                                                                                                                            <div>
-                                                                                                                                                34
-                                                                                                                                            </div>
-                                                                                                                                            <div>
-                                                                                                                                                <div>
-                                                                                                                                                    35
-                                                                                                                                                </div>
-                                                                                                                                                <div>
-                                                                                                                                                    <div>
-                                                                                                                                                        36
-                                                                                                                                                    </div>
-                                                                                                                                                    <div>
-                                                                                                                                                        <div>
-                                                                                                                                                            37
-                                                                                                                                                        </div>
-                                                                                                                                                        <div>
-                                                                                                                                                            <div>
-                                                                                                                                                                38
-                                                                                                                                                            </div>
-                                                                                                                                                            <div>
-                                                                                                                                                                <div>
-                                                                                                                                                                    39
-                                                                                                                                                                </div>
-                                                                                                                                                                <div>
-                                                                                                                                                                    <div>
-                                                                                                                                                                        40
-                                                                                                                                                                    </div>
-                                                                                                                                                                    <div>
-                                                                                                                                                                        <div>
-                                                                                                                                                                            41
-                                                                                                                                                                        </div>
-                                                                                                                                                                        <div>
-                                                                                                                                                                            <div>
-                                                                                                                                                                                42
-                                                                                                                                                                            </div>
-                                                                                                                                                                            <div>
-                                                                                                                                                                                <div>
-                                                                                                                                                                                    43
-                                                                                                                                                                                </div>
-                                                                                                                                                                                <div>
-                                                                                                                                                                                    <div>
-                                                                                                                                                                                        44
-                                                                                                                                                                                    </div>
-                                                                                                                                                                                    <div>
-                                                                                                                                                                                        <div>
-                                                                                                                                                                                            45
-                                                                                                                                                                                        </div>
-                                                                                                                                                                                        <div>
-                                                                                                                                                                                            <div>
-                                                                                                                                                                                                46
-                                                                                                                                                                                            </div>
-                                                                                                                                                                                            <div>
-                                                                                                                                                                                                <div>
-                                                                                                                                                                                                    47
-                                                                                                                                                                                                </div>
-                                                                                                                                                                                                <div>
-                                                                                                                                                                                                    <div>
-                                                                                                                                                                                                        48
-                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                    <div>
-                                                                                                                                                                                                        <div>
-                                                                                                                                                                                                            49
-                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                        <div>
-                                                                                                                                                                                                            <div>
-                                                                                                                                                                                                                50
-                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                            <div>
-                                                                                                                                                                                                                <div>
-                                                                                                                                                                                                                    51
-                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                </div>
-                                                                                                                                                                                            </div>
-                                                                                                                                                                                        </div>
-                                                                                                                                                                                    </div>
-                                                                                                                                                                                </div>
-                                                                                                                                                                            </div>
-                                                                                                                                                                        </div>
-                                                                                                                                                                    </div>
-                                                                                                                                                                </div>
-                                                                                                                                                            </div>
-                                                                                                                                                        </div>
-                                                                                                                                                    </div>
-                                                                                                                                                </div>
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                    </div>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <p>
+                                            Needless nesting of <code>div</code> tags cannot exceed 3 levels.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <p>hello world</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </body>
 
 </html>

@@ -1,0 +1,307 @@
+/*
+Variables.
+==================================================
+*/
+:root {
+  --c-level1: #f00;
+  --c-level2: #f90;
+}
+head {
+  display: block;
+  max-height: 200px;
+  overflow: auto;
+  font-size: 0;
+  line-height: 0;
+  outline: 1px solid #000000;
+  margin: 8px;
+}
+/*
+leve1: Should to fixed
+==================================================
+*/
+html:not([lang]),
+html[lang=""] {
+  display: block;
+}
+html:not([lang])::before,
+html[lang=""]::before {
+  margin: 8px;
+  background-color: var(--c-level1);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  content: '<html> needs [lang="…"]';
+}
+style:empty,
+script:not([src]):empty,
+title:empty {
+  display: block;
+}
+style:empty::before,
+script:not([src]):empty::before,
+title:empty::before {
+  margin: 8px;
+  background-color: var(--c-level1);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  content: 'Those element should not be empty';
+}
+[style=""],
+[title=""],
+[id=""],
+[src=""],
+[href=""],
+[name=""],
+[for=""],
+[type=""],
+[width=""],
+[height=""] {
+  outline: 2px dashed var(--c-level1) !important;
+  content: 'Those props should not empty';
+}
+abbr:not([title]) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: '<abbr> needs [title="…"]';
+}
+a[target]:not([rel*="noopener"]),
+a[target]:not([rel*="noreferrer"]) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: '[target="…"] also needs [rel="noopener"] or [rel="noopener noreferrer"]';
+}
+/* figure */
+:not(figure) > figcaption {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "<figcaption> must be a child of <figure>";
+}
+figure > figcaption:not(:first-child):not(:last-child),
+figure > figcaption:not(:first-child):not(:last-child) ~ :last-child:not(figcaption) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "<figcaption> must be first/last child of <figure>";
+}
+figure > figcaption:not(:first-of-type) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "<figure> should only contain one <figcaption>";
+}
+/* ul/ol */
+:not(ul):not(ol) > li {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "<li> is missing a parent <ul> or <ol>";
+}
+ol > :not(li),
+ul > :not(li) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "Immediate child of <ol> or <ul> must be <li>";
+}
+:not(dl) dd,
+:not(dl) dt {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "<dd> or <dt> is missing a parent <dl> or <div>";
+}
+/* dl */
+dl > :not(dt):not(dd):not(div) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "Immediate child of <dl> must be <dt>, <dd>, or <div>";
+}
+/* form */
+fieldset > :not(legend):first-child {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "Invalid: first-child of <legend>";
+}
+:not(fieldset) > legend,
+fieldset > legend:not(:first-child) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "<legend> must be: first-child of <fieldset>";
+}
+input[type="radio"]:not([name]) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: 'Radios without name="…"';
+}
+form button:not([type]) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: '<button> in <form> need [type="…"]';
+}
+/* dom */
+a a {
+  outline: 2px dashed var(--c-level1) !important;
+  content: '<a/> should not be the kids of  <a/>';
+}
+p div,
+p + div:not(:empty) + p:empty {
+  outline: 2px dashed var(--c-level1) !important;
+  content: '<div> is not allowed within <p>';
+}
+:not(svg) [href]:not(a):not(link):not(area) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: 'attribute href not allowed on this element';
+}
+[target]:not(a):not(form) {
+  outline: 2px dashed var(--c-level1) !important;
+  content: 'attribute target not allowed on this element';
+}
+/* https: */
+a[href^="http:"] {
+  outline: 1px dashed var(--c-level2) !important;
+  content: 'Link to "http: " site. Does "https:" equivalent exist?';
+}
+a:not([title]) {
+  outline: 1px dashed var(--c-level2) !important;
+  content: '<a/> may needs [title="…"]';
+}
+/* body */
+body style {
+  display: block;
+}
+body style::before {
+  margin: 8px;
+  background-color: var(--c-level2);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  content: "<body> should not contain <style>";
+}
+body link {
+  display: block;
+}
+body link::before {
+  margin: 8px;
+  background-color: var(--c-level2);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  content: '<body> should not contain <link> ';
+}
+/* dl */
+dl dd:first-child {
+  outline: 1px dashed var(--c-level2) !important;
+  content: "<dd> can not be: first-child of <dl>";
+}
+/* dom */
+div:only-child > div:only-child > div:only-child {
+  outline: 1px dashed var(--c-level2) !important;
+  content: 'Needlessly nested <div> tags (3).';
+}
+/* head */
+head > style:not(:first-of-type) {
+  display: block;
+}
+head > style:not(:first-of-type)::before {
+  margin: 8px;
+  background-color: var(--c-level2);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  content: "Only use one <style> for crucial CSS";
+}
+label:not([for]) {
+  outline: 1px dashed var(--c-level2) !important;
+  content: '<label> needs [for="…"]';
+}
+img:not([src]),
+img:not([width]),
+img:not([height]),
+img:not([alt]) {
+  outline: 1px dashed var(--c-level2) !important;
+  content: '<img> needs [width="…"] & [height="…"] & [alt="…"] & [src="…"]';
+}
+[style] {
+  outline: 1px dashed var(--c-level2) !important;
+  content: 'inline [style="…"] detected';
+}
+/* script */
+script[src^="http:"] {
+  outline: 1px dashed var(--c-level2) !important;
+  content: 'Consider "https: " for <script> with [src="' attr(src) '"]';
+}
+script[src]:not([async]):not([defer]) {
+  display: block;
+}
+script[src]:not([async]):not([defer])::before {
+  margin: 8px;
+  background-color: var(--c-level2);
+  color: #ffffff;
+  padding: 0.5em;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  content: 'Consider [async] or [defer] for <script> with [src="' attr(src) '"]';
+}
+span div,
+strong div,
+small div,
+em div,
+i div,
+label div,
+span h1,
+strong h1,
+small h1,
+em h1,
+i h1,
+label h1,
+span h2,
+strong h2,
+small h2,
+em h2,
+i h2,
+label h2,
+span h3,
+strong h3,
+small h3,
+em h3,
+i h3,
+label h3,
+span h4,
+strong h4,
+small h4,
+em h4,
+i h4,
+label h4,
+span h5,
+strong h5,
+small h5,
+em h5,
+i h5,
+label h5,
+span h6,
+strong h6,
+small h6,
+em h6,
+i h6,
+label h6,
+span p,
+strong p,
+small p,
+em p,
+i p,
+label p,
+span form,
+strong form,
+small form,
+em form,
+i form,
+label form,
+span ul,
+strong ul,
+small ul,
+em ul,
+i ul,
+label ul,
+span ol,
+strong ol,
+small ol,
+em ol,
+i ol,
+label ol {
+  outline: 2px dashed var(--c-level1) !important;
+  content: "Block elements are not suppose be in the inline or inline block elements";
+}
