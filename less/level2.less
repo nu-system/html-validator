@@ -6,8 +6,10 @@
 }
 
 #level2(@text) {
-    outline: 1px dashed var(--c-level2) !important;
-    content: @text;
+    &:not([data-hvi]){
+        outline: 1px dashed var(--c-level2) !important;
+        content: @text;
+    }
 }
 
 /* https: */
@@ -40,10 +42,6 @@ div:only-child>div:only-child>div:only-child {
 
 
 /* head */
-head>style:not(:first-of-type) {
-    #level2Before("Only use one <style> for crucial CSS");
-}
-
 label:not([for]) {
     #level2('<label> needs [for="…"]');
 }
