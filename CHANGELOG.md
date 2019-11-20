@@ -1,3 +1,12 @@
+## [0.0.7](https://github.com/nu-system/html-validator/compare/v0.0.6...v0.0.7) (2019-11-20)
+
+
+### Features
+
+* 添加ignore 规则 ([c85898a](https://github.com/nu-system/html-validator/commit/c85898a704aa350311a0d755008acd057cb1334c))
+
+
+
 ## [0.0.6](https://github.com/nu-system/html-validator/compare/v0.0.4...v0.0.6) (2019-11-19)
 
 
