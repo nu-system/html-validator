@@ -20,6 +20,8 @@ If you just wanna use level1 try
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@_nu/html-validator/level1.css" />
 ```
 
+if you wanna ignore any element just add  `data-hvi` attr.
+
 ## Content
 
 ```bash
@@ -34,4 +36,4 @@ All valid msg on css prop of `content`.
 
 html-lint was build on this awesome projects:
 
-* https://github.com/t7/construct.css
+* [https://github.com/t7/construct.css](https://github.com/t7/construct.css)

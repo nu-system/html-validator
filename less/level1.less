@@ -13,15 +13,13 @@ head {
   overflow: auto;
   font-size: 0;
   line-height: 0;
-  outline: 1px solid #000000;
-  margin: 8px;
 }
 
 // 需要把校验信息放到 before 元素
 #beforeBase(@color, @content) {
   display: block;
 
-  &::before {
+  &:not([data-hvi])::before {
     margin: 8px;
     background-color: @color;
     color: #ffffff;
@@ -40,8 +38,10 @@ head {
 
 // 等级1的校验
 #level1(@text) {
-  outline: 2px dashed var(--c-level1) !important;
-  content: @text;
+  &:not([data-hvi]){
+    outline: 2px dashed var(--c-level1) !important;
+    content: @text;
+  }
 }
 
 /*
