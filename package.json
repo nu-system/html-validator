@@ -1,6 +1,6 @@
 {
   "name": "@_nu/html-validator",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Semantic HTML liner in just pure CSS way.",
   "main": "/css/level2.css",
   "repository": "https://github.com/nu-system/html-validator.git",
