@@ -108,8 +108,8 @@ ul>:not(li) {
   #level1("Immediate child of <ol> or <ul> must be <li>");
 }
 
-:not(dl) dd,
-:not(dl) dt {
+:not(dl):not(div) > dd,
+:not(dl):not(div) > dt {
   #level1("<dd> or <dt> is missing a parent <dl> or <div>");
 }
 
