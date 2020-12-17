@@ -53,10 +53,6 @@ img:not([alt]) {
     #level2('<img> needs [width="…"] & [height="…"] & [alt="…"] & [src="…"]');
 }
 
-[style] {
-    #level2('inline [style="…"] detected');
-}
-
 /* script */
 script[src^="http:"] {
     #level2('Consider "https: " for <script> with [src="'attr(src) '"]');
